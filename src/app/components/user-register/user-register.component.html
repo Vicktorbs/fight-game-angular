@@ -1,0 +1,25 @@
+<div class="init-container fixed-top">
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12 title-style text-center">
+        <h1>Heroe-Battle</h1>
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-5 inputs-margin">
+      <div class="col-4">
+        <input type="text" name="player 1" id="p1" [(ngModel)]="user1" placeholder="Player 1" class="form-control">
+      </div>
+      <div class="col-4"></div>
+      <div class="col-4">
+        <input type="text" name="player 2" id="p2" [(ngModel)]="user2" placeholder="Player 2" class="form-control">
+      </div>
+    </div>
+    <div class="row inputs-margin">
+      <div class="col-12 text-center">
+        <a routerLink="select-heroe" class="btn btn-outline-dark btn-block access-button btn-lg p-4"
+        (click)="saveUsersNames()">GO!!</a>
+      </div>
+    </div>
+  </div>
+</div>

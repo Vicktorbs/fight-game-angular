@@ -1,0 +1,18 @@
+.h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 70px;
+  color: #B05AE4;
+}
+
+.image-container {
+  height: 350px;
+}
+
+.options-button {
+  height: 100px;
+  width: 100px;
+}
+
+.fighterName {
+  font-family: 'Lobster', cursive;
+}

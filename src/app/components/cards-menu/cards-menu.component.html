@@ -1,0 +1,91 @@
+<!-- Nombres -->
+<nav class="navbar sticky-top navbar-light bg-light">
+    <div class="container-fluid">
+        <!-- <a class="navbar-brand" href="#">Sticky top</a> -->
+        <button type="button" class="btn btn-outline-dark" id="pl1btn" onclick="changeStatePlayer('pl1')">
+            <p class="m-3" id="pl1"></p>
+        </button>
+        <a routerLink="/battle" class="btn btn-danger rounded-pill"
+            id="fightButton">
+            <p class="m-3" id="fight">Pelear!!</p>
+        </a>
+        <button type="button" class="btn btn-outline-dark" id="pl2btn" onclick="changeStatePlayer('pl2')">
+            <p class="m-3" id="pl2"></p>
+        </button>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-1">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Grafica
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Descripcionde grafica</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <canvas id="explanation" width="200" height="200"></canvas>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-11">
+            <nav aria-label="Pages">
+                <ul class="pagination pagination-lg" id="pages"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Loader -->
+<div class="container" id="loader-container">
+    <div class="row">
+        <div class="col text-center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center mt-2">
+            <p>Loading...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Tarjetas -->
+<div class="container mt-3 mb-3 visually-hidden" id="cards-container">
+    <div class="row row-cols-1 row-cols-md-4 row-cols-xs-2 g-4" id="contenedor">
+        <!-- <div class="col">
+            <div class="card h-100 cord-arr-container">
+                <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg" class="card-img-top hwImage" alt="...">
+                <div class="card-body card-img-overlay text-white">
+                    <h5 class="card-title">A-Bomb</h5>
+                    <p class="card-text">
+                        </p><p class="card-text">intelligence: 38</p>
+                        <p class="card-text">strength: 100</p>
+                        <p class="card-text">speed: 17</p>
+                        <p class="card-text">durability: 80</p>
+                        <p class="card-text">power: 24</p>
+                        <p class="card-text">combat: 64</p>
+                    <p></p>
+                    <a href="#" class="btn btn-primary" id="1" onclick="HeroeSelected(this.id)">Seleccionar</a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>

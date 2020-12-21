@@ -1,0 +1,31 @@
+.card:hover .card-body{
+    opacity: 1;
+    box-shadow: 3px 3px 10px #ff0000;
+}
+.card-body {
+    opacity: 0;
+    background: rgba(0, 0, 0, .7);
+}
+#loader-container {
+    margin-top: 30vh;
+}
+.card-title {
+    font-family: 'Lobster', cursive;
+    font-size: 28px;
+}
+.card-text {
+    font-size: 12px;
+}
+canvas {
+    background: rgba(0, 0, 0, 0.8);
+}
+canvas#exampleModal {
+    background: #ffff;
+}
+.list-group .list-group-item{
+    background: rgba(0, 0, 0, 0);
+}
+#fight {
+    font-family: 'Lobster', cursive;
+    font-size: 20px;
+}
