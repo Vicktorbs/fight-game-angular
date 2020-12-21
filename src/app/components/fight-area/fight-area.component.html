@@ -1,78 +1,102 @@
 <div class="container">
 
-  <div class="row">
-    <div class="col">
-      <p class="h1 text-center mt-3">VS</p>
+    <div class="row">
+        <div class="col">
+        <p class="h1 text-center mt-3">VS</p>
+        </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col" id="succesMessage">
-      <!-- <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Juego terminado</h4>
-                <p>El ganador es Victor despues de 5 movimientos</p>
-                <hr>
-                <div class="text-center">
-                    <a href="/index.html" type="button" class="btn btn-outline-success mb-0">Volver a inicio</a>
-                </div>
-            </div> -->
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-6" id="fighterOne">
-      <!-- <div class="row">
-                <div class="col text-center mb-2">Abraham Sapien</div>
+    <div class="row">
+        <div class="col" id="succesMessage">
+        <!-- <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Juego terminado</h4>
+            <p>El ganador es Victor despues de 5 movimientos</p>
+            <hr>
+            <div class="text-center">
+                <a href="/index.html" type="button" class="btn btn-outline-success mb-0">Volver a inicio</a>
             </div>
+        </div> -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6" id="fighterOne" *ngIf="cardsSelcted.dataCardOne">
             <div class="row">
-                <div class="col-6">
-                    <canvas id="2" width="200" height="200"></canvas>
-                </div>
-                <div class="col-6">
-                    <div class="card text-white" id="fighter1">
-                        <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/2-abe-sapien.jpg"
-                            class="card-img shadow image-container" alt="Abraham Sapien">
-                    </div>
-                </div>
+                <div class="col text-center mb-2">{{ cardsSelcted.dataCardOne.name }}</div>
             </div>
-            <div class="row mt-1">
+            <div class="row mb-1">
                 <div class="col">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100">HP: 165</div>
                     </div>
                 </div>
-            </div> -->
-    </div>
-    <div class="col-6" id="fighterTwo">
-      <!-- <div class="row">
-                <div class="col text-center mb-2">Abraham Sapien</div>
             </div>
             <div class="row">
                 <div class="col-6">
-                    <div class="card text-white" id="fighter1">
-                        <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/2-abe-sapien.jpg"
-                            class="card-img shadow image-container" alt="Abraham Sapien">
+                    <div>
+                        <div>
+                            <div style="display: block">
+                            <canvas baseChart
+                                [datasets]="fight1ChartData"
+                                [labels]="barChartLabels"
+                                [options]="barChartOptions"
+                                [plugins]="barChartPlugins"
+                                [legend]="barChartLegend"
+                                [chartType]="barChartType">
+                            </canvas>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-6">
-                    <canvas id="2" width="200" height="200"></canvas>
+                    <div class="card text-white" id="fighter1">
+                        <img [src]="cardsSelcted.dataCardOne.images.md" class="card-img shadow image-container" [alt]="cardsSelcted.dataCardOne.name">
+                    </div>
                 </div>
             </div>
-            <div class="row mt-1">
+        </div>
+        <div class="col-6" id="fighterTwo" *ngIf="cardsSelcted.dataCardTwo">
+            <div class="row">
+                <div class="col text-center mb-2">{{ cardsSelcted.dataCardTwo.name }}</div>
+            </div>
+            <div class="row mb-1">
                 <div class="col">
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="25"
                             aria-valuemin="0" aria-valuemax="100">HP: 165</div>
                     </div>
                 </div>
-            </div> -->
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="card text-white" id="fighter1">
+                        <img [src]="cardsSelcted.dataCardTwo.images.md" class="card-img shadow image-container" [alt]="cardsSelcted.dataCardTwo.name">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div>
+                        <div>
+                            <div style="display: block">
+                            <canvas baseChart
+                                [datasets]="fight2ChartData"
+                                [labels]="barChartLabels"
+                                [options]="barChartOptions"
+                                [plugins]="barChartPlugins"
+                                [legend]="barChartLegend"
+                                [chartType]="barChartType">
+                            </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="fixed-bottom">
-    <div class="row text-center" id="attack-buttos">
-      <!-- <div class="col-6">
+    <div class="fixed-bottom">
+        <div class="row text-center" id="attack-buttos">
+            <!-- <div class="col-6">
                 <button type="button" class="btn btn-success btn-lg rounded-pill m-3">Recuperar</button>
                 <button type="button" class="btn btn-danger btn-lg rounded-pill m-3">Ataque</button>
                 <button type="button" class="btn btn-dark btn-lg rounded-pill m-3">Especial</button>
@@ -82,7 +106,7 @@
                 <button type="button" class="btn btn-danger btn-lg rounded-pill m-3">Ataque</button>
                 <button type="button" class="btn btn-success btn-lg rounded-pill m-3">Recuperar</button>
             </div> -->
+        </div>
     </div>
-  </div>
 
 </div>
