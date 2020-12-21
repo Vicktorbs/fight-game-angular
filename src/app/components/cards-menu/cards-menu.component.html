@@ -68,24 +68,26 @@
 </div>
 
 <!-- Tarjetas -->
-<div class="container mt-3 mb-3 visually-hidden" id="cards-container">
+<div class="container mt-3 mb-3" id="cards-container">
     <div class="row row-cols-1 row-cols-md-4 row-cols-xs-2 g-4" id="contenedor">
-        <!-- <div class="col">
-            <div class="card h-100 cord-arr-container">
-                <img src="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg" class="card-img-top hwImage" alt="...">
-                <div class="card-body card-img-overlay text-white">
-                    <h5 class="card-title">A-Bomb</h5>
-                    <p class="card-text">
-                        </p><p class="card-text">intelligence: 38</p>
-                        <p class="card-text">strength: 100</p>
-                        <p class="card-text">speed: 17</p>
-                        <p class="card-text">durability: 80</p>
-                        <p class="card-text">power: 24</p>
-                        <p class="card-text">combat: 64</p>
-                    <p></p>
-                    <a href="#" class="btn btn-primary" id="1" onclick="HeroeSelected(this.id)">Seleccionar</a>
+        <div class="col"*ngFor="let fighter of fighter">
+            <div class="card h-100">
+                    <img [src]="fighter.images.xs" class="card-img-top hwImage" [alt]="fighter.name">
+                <div class='card-body card-img-overlay text-white text-center'>
+                    <h5 class='card-title text-center'>{{ fighter.name }}</h5>
+                    <p class='card-text'>
+                        <canvas id="${heroe.id}" width="200" height="200"></canvas>
+                    </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <span class="badge bg-primary">HP: {{ fighter.powerstats.durability + 100 }}</span>
+                            <span class="badge bg-success">Ataque: {{ fighter.powerstats.durability + 100 }}</span>
+                            <span class="badge bg-danger">Especial: {{ fighter.powerstats.durability + 100 }}</span>
+                        </li>
+                    </ul>
+                    <button class='btn btn-primary' [id]="fighter.id">Seleccionar</button>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </div>

@@ -7,6 +7,8 @@ import { CardsMenuComponent } from './components/cards-menu/cards-menu.component
 import { FightAreaComponent } from './components/fight-area/fight-area.component';
 import { UserRegisterComponent } from './components/user-register/user-register.component';
 import { FormsModule } from '@angular/forms';
+import { FightersService } from './services/fighters.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [FightersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
