@@ -5,7 +5,7 @@
         <button type="button" [ngClass]="{'active': player1Selecting}" class="btn btn-outline-dark" id="pl1btn" (click)="playerSelcting(1)">
             <p class="m-3" id="pl1">{{ playerOne }}</p>
         </button>
-        <a routerLink="/battle" [ngClass]="{'disabled': !readyToFight}" class="btn btn-danger rounded-pill"
+        <a [routerLink]="['/battle', dataFighth.playerOneCard, dataFighth.playerTwoCard]" [ngClass]="{'disabled': !readyToFight}" class="btn btn-danger rounded-pill"
             id="fightButton">
             <p class="m-3" id="fight">Pelear!!</p>
         </a>
@@ -111,7 +111,18 @@
                             <span class="badge bg-danger">Especial: {{ setSpecialAttack(fighter.powerstats) }}</span>
                         </li>
                     </ul>
-                    <button class='btn btn-primary' [id]="fighter.id" (click)="cardSelected(fighter.id)">Seleccionar</button>
+                    <button class='btn btn-primary' 
+                        [id]="fighter.id" 
+                        *ngIf="fighter.id !== dataFighth.playerOneCard && fighter.id !== dataFighth.playerTwoCard" 
+                        (click)="cardSelected(fighter.id)">
+                        Seleccionar
+                    </button>
+                    <button class='btn btn-success disabled' 
+                        [id]="fighter.id" 
+                        *ngIf="fighter.id === dataFighth.playerOneCard || fighter.id === dataFighth.playerTwoCard" 
+                        (click)="cardSelected(fighter.id)">
+                        Seleccionado
+                    </button>
                 </div>
 
             </div>

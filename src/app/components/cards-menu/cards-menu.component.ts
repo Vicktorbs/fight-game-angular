@@ -62,7 +62,7 @@ export class CardsMenuComponent implements OnInit {
   drawCards(begin, end) {
     this.cardsReady = false
     this.fighters = this.cardsFighterData.slice(begin, end)
-    console.log(this.fighters, begin, end);
+    // console.log(this.fighters, begin, end);
     
     setTimeout(() => {
       this.cardsReady = true
@@ -100,13 +100,11 @@ export class CardsMenuComponent implements OnInit {
   cardSelected(cardId) {
     if (this.player1Selecting) {
       this.dataFighth.playerOneCard = cardId;
-      this.fighterService.cardsSelected = this.dataFighth
     }else if (this.player2Selecting) {
       this.dataFighth.playerTwoCard = cardId
-      this.fighterService.cardsSelected = this.dataFighth
       this.readyToFight = true
     }
-    console.log(this.dataFighth);
+    // console.log(this.dataFighth);
     
   }
 

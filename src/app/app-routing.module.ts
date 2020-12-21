@@ -7,7 +7,7 @@ import { UserRegisterComponent } from './components/user-register/user-register.
 
 const routes: Routes = [
   {path: '', component: UserRegisterComponent},
-  {path: 'battle', component: FightAreaComponent},
+  {path: 'battle/:cardp1/:cardp2', component: FightAreaComponent},
   {path: 'select-heroe', component: CardsMenuComponent}
 ];
 
