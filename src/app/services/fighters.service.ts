@@ -9,6 +9,7 @@ import { Fighter } from "../models/fighter";
 export class FightersService {
 
   readonly URL_API = 'https://akabab.github.io/superhero-api/api/all.json';
+  cardsSelected: any
 
   constructor(private http: HttpClient) {}
 

@@ -2,15 +2,15 @@
 <nav class="navbar sticky-top navbar-light bg-light">
     <div class="container-fluid">
         <!-- <a class="navbar-brand" href="#">Sticky top</a> -->
-        <button type="button" class="btn btn-outline-dark" id="pl1btn" onclick="changeStatePlayer('pl1')">
-            <p class="m-3" id="pl1"></p>
+        <button type="button" [ngClass]="{'active': player1Selecting}" class="btn btn-outline-dark" id="pl1btn" (click)="playerSelcting(1)">
+            <p class="m-3" id="pl1">{{ playerOne }}</p>
         </button>
-        <a routerLink="/battle" class="btn btn-danger rounded-pill"
+        <a routerLink="/battle" [ngClass]="{'disabled': !readyToFight}" class="btn btn-danger rounded-pill"
             id="fightButton">
             <p class="m-3" id="fight">Pelear!!</p>
         </a>
-        <button type="button" class="btn btn-outline-dark" id="pl2btn" onclick="changeStatePlayer('pl2')">
-            <p class="m-3" id="pl2"></p>
+        <button type="button" [ngClass]="{'active': player2Selecting}" class="btn btn-outline-dark" id="pl2btn" (click)="playerSelcting(2)">
+            <p class="m-3" id="pl2">{{ playerTwo }}</p>
         </button>
     </div>
 </nav>
@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-1">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="defineChartValues(0, 50, 50, 50, 50, 50, 50)">
                 Grafica
             </button>
 
@@ -34,10 +34,19 @@
                                 aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <canvas id="explanation" width="200" height="200"></canvas>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <div>
+                                <div>
+                                    <div style="display: block">
+                                    <canvas baseChart
+                                        [datasets]="radarChartData"
+                                        [options]="radarChartOptions"
+                                        [labels]="radarChartLabels"
+                                        [chartType]="radarChartType"
+                                        width="200" height="200">
+                                    </canvas>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,14 +54,18 @@
         </div>
         <div class="col-11">
             <nav aria-label="Pages">
-                <ul class="pagination pagination-lg" id="pages"></ul>
+                <ul class="pagination pagination-lg" id="pages">
+                    <li class="page-item" *ngFor="let page of pagerIds; let i = index" aria-current="page">
+                        <button class="page-link" (click)="drawCards(page.begin, page.top)">{{ page.id }}</button>
+                    </li>
+                </ul>
             </nav>
         </div>
     </div>
 </div>
 
 <!-- Loader -->
-<div class="container" id="loader-container">
+<div class="container" [ngClass]="{'visually-hidden': cardsReady}" id="loader-container">
     <div class="row">
         <div class="col text-center">
             <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
@@ -68,25 +81,39 @@
 </div>
 
 <!-- Tarjetas -->
-<div class="container mt-3 mb-3" id="cards-container">
+<div class="container mt-3 mb-3" [ngClass]="{'visually-hidden': !cardsReady}" id="cards-container">
     <div class="row row-cols-1 row-cols-md-4 row-cols-xs-2 g-4" id="contenedor">
-        <div class="col"*ngFor="let fighter of fighter">
-            <div class="card h-100">
-                    <img [src]="fighter.images.xs" class="card-img-top hwImage" [alt]="fighter.name">
+        <div class="col"*ngFor="let fighter of fighters">
+            <div class="card h-100" 
+            (mouseover)="defineChartValues(fighter.id, fighter.powerstats.intelligence, fighter.powerstats.strength, fighter.powerstats.speed, fighter.powerstats.durability, fighter.powerstats.power, fighter.powerstats.combat)">
+                
+                <img [src]="fighter.images.md" class="card-img-top hwImage" [alt]="fighter.name">
                 <div class='card-body card-img-overlay text-white text-center'>
                     <h5 class='card-title text-center'>{{ fighter.name }}</h5>
-                    <p class='card-text'>
-                        <canvas id="${heroe.id}" width="200" height="200"></canvas>
-                    </p>
+                    <div>
+                        <div>
+                            <div style="display: block">
+                            <canvas baseChart
+                                [id]="fighter.id"
+                                [datasets]="radarChartData"
+                                [options]="radarChartOptions"
+                                [labels]="radarChartLabels"
+                                [chartType]="radarChartType"
+                                width="200" height="200">
+                            </canvas>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
                             <span class="badge bg-primary">HP: {{ fighter.powerstats.durability + 100 }}</span>
-                            <span class="badge bg-success">Ataque: {{ fighter.powerstats.durability + 100 }}</span>
-                            <span class="badge bg-danger">Especial: {{ fighter.powerstats.durability + 100 }}</span>
+                            <span class="badge bg-success">Ataque: {{ setSimpleAttack(fighter.powerstats) }}</span>
+                            <span class="badge bg-danger">Especial: {{ setSpecialAttack(fighter.powerstats) }}</span>
                         </li>
                     </ul>
-                    <button class='btn btn-primary' [id]="fighter.id">Seleccionar</button>
+                    <button class='btn btn-primary' [id]="fighter.id" (click)="cardSelected(fighter.id)">Seleccionar</button>
                 </div>
+
             </div>
         </div>
     </div>

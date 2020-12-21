@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FightersService } from 'src/app/services/fighters.service';
 
 @Component({
   selector: 'app-fight-area',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FightAreaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fighterService: FightersService) { }
 
   ngOnInit() {
+    console.log(this.fighterService.cardsSelected);
+    
   }
 
 }

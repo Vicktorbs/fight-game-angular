@@ -9,6 +9,7 @@ import { UserRegisterComponent } from './components/user-register/user-register.
 import { FormsModule } from '@angular/forms';
 import { FightersService } from './services/fighters.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule, ThemeService } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
-  providers: [FightersService],
+  providers: [
+    FightersService,
+    ThemeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
