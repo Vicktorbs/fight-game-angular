@@ -47,7 +47,7 @@ export class CardsMenuComponent implements OnInit {
 
     this.fightersCardListSub = await this.fighterService.getCards().subscribe(res => {
       this.cardsFighterData = res as Fighter[]
-      this.drawCards(0, 12)      
+      this.drawCards(0, 40)      
       // console.log(this.cardsFighterData);
     })
 

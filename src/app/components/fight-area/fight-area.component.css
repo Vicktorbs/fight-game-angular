@@ -16,3 +16,10 @@
 .fighterName {
   font-family: 'Lobster', cursive;
 }
+.fightState {
+  text-decoration-line: line-through;
+  color: red;
+}
+.loader {
+  margin-top: 25vh;
+}
