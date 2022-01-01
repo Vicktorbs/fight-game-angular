@@ -115,7 +115,7 @@
     <div class="fixed-bottom">
         <div class="row text-center" id="attack-buttos">
             <!-- Peleador 1 -->
-            <div class="col-6">
+            <div class="col-6" [ngClass]="{'active-user': fighterOneActive}">
                 <button type="button" 
                     class="btn btn-success btn-lg rounded-pill m-3" 
                     [ngClass]="{'disabled': !ableSpecialAbilitiesPl1}"
@@ -135,7 +135,7 @@
                 </button>
             </div>
             <!-- Peleador 2 -->
-            <div class="col-6">
+            <div class="col-6" [ngClass]="{'active-user': fighterTwoActive}">
                 <button type="button" 
                     class="btn btn-dark btn-lg rounded-pill m-3"
                     [ngClass]="{'disabled': !ableSpecialAbilitiesPl2}"

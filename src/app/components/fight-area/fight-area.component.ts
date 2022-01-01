@@ -27,6 +27,8 @@ export class FightAreaComponent implements OnInit {
     dataCardOne: '',
     dataCardTwo: ''
   }
+  fighterOneActive: boolean = true;
+  fighterTwoActive: boolean = false;
   fightersCardListSub: Subscription;
   loadingData: boolean = true;
   cardsFighterData: Fighter[];
@@ -110,6 +112,8 @@ export class FightAreaComponent implements OnInit {
 
     if (fighter === 'pl1' && this.fightAtacksCounter % 2 === 0) {
 
+      this.fighterOneActive = false;
+      this.fighterTwoActive = true;
       this.fightAtacksCounter++
       this.fighterOneAttacksCounter++
       this.cardsSelcted.dataCardTwo.damage -= typeAttack
@@ -124,6 +128,8 @@ export class FightAreaComponent implements OnInit {
 
     } else if (fighter === 'pl2' && this.fightAtacksCounter % 2 > 0) {
 
+      this.fighterOneActive = true;
+      this.fighterTwoActive = false;
       this.fightAtacksCounter++
       this.fighterTwoAttacksCounter++
       this.cardsSelcted.dataCardOne.damage -= typeAttack
