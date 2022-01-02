@@ -1,23 +1,22 @@
 .init-container {
-    background: #f7ff00;
-    /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #db36a4, #f7ff00);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    height: 100vh;
-  }
-  
-  h1 {
-    font-family: 'Lobster', cursive;
-  }
-  
-  .access-button {
-    font-family: 'Lobster', cursive;
-    font-size: 30px;
-  }
-  
-  .inputs-margin {
-    padding-top: 100px;
-  }
-  
+  background: #D1F2EB ;
+  height: 100vh;
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+}
+
+.access-button {
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+}
+
+.inputs-margin {
+  padding-top: 100px;
+}
+.form-control {
+  box-shadow: 1px 1px 3px #5DADE2;
+  font-family: 'Lobster', cursive;
+  border: 1px solid #5DADE2;
+} 

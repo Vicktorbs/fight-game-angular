@@ -5,7 +5,7 @@
         <button type="button" [ngClass]="{'active': player1Selecting}" class="btn btn-outline-dark" id="pl1btn" (click)="playerSelcting(1)">
             <p class="m-3" id="pl1">{{ playerOne }}</p>
         </button>
-        <a [routerLink]="['/battle', dataFighth.playerOneCard, dataFighth.playerTwoCard]" [ngClass]="{'disabled': !readyToFight}" class="btn btn-danger rounded-pill"
+        <a [routerLink]="['/battle', dataFighth.playerOneCard, dataFighth.playerTwoCard]" [ngClass]="{'disabled': !readyToFight, 'ready-button': readyToFight}" class="btn btn-danger rounded-pill"
             id="fightButton">
             <p class="m-3" id="fight">Pelear!!</p>
         </a>
@@ -17,42 +17,7 @@
 
 <div class="container mt-3">
     <div class="row">
-        <div class="col-1">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="defineChartValues(0, 50, 50, 50, 50, 50, 50)">
-                Grafica
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Descripcionde grafica</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div>
-                                <div>
-                                    <div style="display: block">
-                                    <canvas baseChart
-                                        [datasets]="radarChartData"
-                                        [options]="radarChartOptions"
-                                        [labels]="radarChartLabels"
-                                        [chartType]="radarChartType"
-                                        width="200" height="200">
-                                    </canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-11">
+        <div class="col-12">
             <nav aria-label="Pages">
                 <ul class="pagination pagination-lg" id="pages">
                     <li class="page-item" *ngFor="let page of pagerIds; let i = index" aria-current="page">
